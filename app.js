@@ -1,45 +1,57 @@
-// Data Types
+// Data Type Conversion
 
-// PRIMITIVE DATA TYPES
+let val;
 
-// String
-const name = "Heather";
-console.log(typeof name);
+// Number to String
+val = 5;
+val = String(5);
+val = String(4 + 4);
 
-// Number
-const age = 12;
-console.log(typeof age);
+console.log(val);
+console.log(typeof val);
+console.log(val.length);
 
-// Boolean
-const haveCar = true;
-console.log(typeof haveCar);
+// Boolean to String
+val = String(true);
 
-// Null
-const carType = null;
-console.log(typeof carType);
+console.log(val);
+console.log(typeof val);
+console.log(val.length);
 
-// Undefined
-let married;
-console.log(typeof married);
+// Date to String
+val = String(new Date());
 
-// Symbol
-const sym = Symbol();
-console.log(typeof sym);
+console.log(val);
+console.log(typeof val);
+console.log(val.length);
 
-// REFERENCE DATA TYPES
+// Array to String
+val = String([1, 2, 3, 4]);
 
-// Array
-const hobbies = ["bowling", "cake making", "bird watching", "hiking"];
-console.log(typeof hobbies);
+console.log(val);
+console.log(typeof val);
+console.log(val.length);
 
-// Object Literal
-const address = {
-  city: "Denver",
-  state: "CO"
-};
-console.log(typeof address);
+// toString() method
+val = (5).toString();
 
-// Date
-const today = new Date();
-console.log(today);
-console.log(typeof today);
+console.log(val);
+console.log(typeof val);
+console.log(val.length);
+
+// Values to a Number
+val = "5"; /* this will throw an error until changed to a number */
+val = Number("5");
+val = Number(true); /* returns 1 */
+val = Number(false); /* returns 0 */
+val = Number(null); /* returns 0 */
+val = Number("five"); /* returns NaN */
+val = Number([1, 2, 3]); /* returns NaN */
+
+// parseInt Method
+val = parseInt("100"); /* this will not allow decimals */
+val = parseFloat("100.3"); /* this will allow decimals */
+
+console.log(val);
+console.log(typeof val);
+console.log(val.toFixed());
