@@ -1,57 +1,32 @@
-// Data Type Conversion
+// Numbers and Math Object
 
+const num1 = 100;
+const num2 = 50;
 let val;
 
-// Number to String
-val = 5;
-val = String(5);
-val = String(4 + 4);
+// Simple Math with Numbers
+val = num1 + num2;
+val = num1 * num2;
+val = num1 - num2;
+val = num1 / num2;
+val = num1 % num2;
 
 console.log(val);
-console.log(typeof val);
-console.log(val.length);
 
-// Boolean to String
-val = String(true);
-
-console.log(val);
-console.log(typeof val);
-console.log(val.length);
-
-// Date to String
-val = String(new Date());
-
-console.log(val);
-console.log(typeof val);
-console.log(val.length);
-
-// Array to String
-val = String([1, 2, 3, 4]);
+// Math Object
+val = Math.PI;
+val = Math.E;
+val = Math.round(2.8); /* this will round to the nearest whole number. */
+val = Math.ceil(2.4); /* this will round the number up. */
+val = Math.floor(2.8); /* this will round down */
+val = Math.sqrt(64); /* squareroot */
+val = Math.abs(-3); /* absolute */
+val = Math.pow(8, 2); /* power */
+val = Math.min(6, 8, 30, 10); /* will return the minimum number */
+val = Math.max(9, 393, 20, 30); /* this will return the maximum number */
+val = Math.random(); /* this will return a random decimal number */
+val = Math.floor(
+  Math.random() * 20
+); /* this will give you a random whole number up to 20 */
 
 console.log(val);
-console.log(typeof val);
-console.log(val.length);
-
-// toString() method
-val = (5).toString();
-
-console.log(val);
-console.log(typeof val);
-console.log(val.length);
-
-// Values to a Number
-val = "5"; /* this will throw an error until changed to a number */
-val = Number("5");
-val = Number(true); /* returns 1 */
-val = Number(false); /* returns 0 */
-val = Number(null); /* returns 0 */
-val = Number("five"); /* returns NaN */
-val = Number([1, 2, 3]); /* returns NaN */
-
-// parseInt Method
-val = parseInt("100"); /* this will not allow decimals */
-val = parseFloat("100.3"); /* this will allow decimals */
-
-console.log(val);
-console.log(typeof val);
-console.log(val.toFixed());
