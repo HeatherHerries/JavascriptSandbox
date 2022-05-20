@@ -1,38 +1,45 @@
-// var, let and const
+// Data Types
 
-var name = "John Doe";
-console.log(name);
+// PRIMITIVE DATA TYPES
 
-// You can reassign variables if they are 'var' or 'let'.
-name = "Steve Smith";
-console.log(name);
+// String
+const name = "Heather";
+console.log(typeof name);
 
-// Initialize a variable
-var greeting;
-console.log(greeting); /* this will return undefined */
-greeting = "Hello"; /* this will define the variable */
-console.log(greeting);
+// Number
+const age = 12;
+console.log(typeof age);
 
-// Variables can only include letters, numbers, _, and $.
-// Variables can't start with a number.
-// Multiword regular variables best practice is to use camelcase.
-var firstName = "John";
-var first_name = "Sara"; /* Underscore convention */
-var FirstName = "Tom"; /* Pascal case convention */
+// Boolean
+const haveCar = true;
+console.log(typeof haveCar);
 
-// LET
+// Null
+const carType = null;
+console.log(typeof carType);
 
-let catName = "Domino";
-console.log(catName);
-// You have the option to reassign the variable value
-catName = "Achilles";
-console.log(catName);
+// Undefined
+let married;
+console.log(typeof married);
 
-// CONST
-const state = "Colorado";
-console.log(state);
-// The value of const will not be able to be changed. It will throw an error.
+// Symbol
+const sym = Symbol();
+console.log(typeof sym);
 
-// You cannot not define a value to a const variable. That will throw an error.
+// REFERENCE DATA TYPES
 
-// One thing to keep in mind with const is that the if you use const for an array or object those can be mutated with methods and what not, but you will not be able to directly reassign the values.
+// Array
+const hobbies = ["bowling", "cake making", "bird watching", "hiking"];
+console.log(typeof hobbies);
+
+// Object Literal
+const address = {
+  city: "Denver",
+  state: "CO"
+};
+console.log(typeof address);
+
+// Date
+const today = new Date();
+console.log(today);
+console.log(typeof today);
