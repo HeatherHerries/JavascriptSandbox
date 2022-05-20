@@ -1,32 +1,43 @@
-// Numbers and Math Object
+// Strings Methods and Concatenation
 
-const num1 = 100;
-const num2 = 50;
+const firstName = "Heather";
+const lastName = "Herries";
+const age = 46;
+const string = "Hi My name is Heather";
+
 let val;
+val = firstName + lastName;
 
-// Simple Math with Numbers
-val = num1 + num2;
-val = num1 * num2;
-val = num1 - num2;
-val = num1 / num2;
-val = num1 % num2;
+// Concatenation
+val = firstName + " " + lastName;
+val = "Hello my name is " + firstName + " and I am " + age;
 
-console.log(val);
+// Appending
+val = "Kristen ";
+val += "Smith";
 
-// Math Object
-val = Math.PI;
-val = Math.E;
-val = Math.round(2.8); /* this will round to the nearest whole number. */
-val = Math.ceil(2.4); /* this will round the number up. */
-val = Math.floor(2.8); /* this will round down */
-val = Math.sqrt(64); /* squareroot */
-val = Math.abs(-3); /* absolute */
-val = Math.pow(8, 2); /* power */
-val = Math.min(6, 8, 30, 10); /* will return the minimum number */
-val = Math.max(9, 393, 20, 30); /* this will return the maximum number */
-val = Math.random(); /* this will return a random decimal number */
-val = Math.floor(
-  Math.random() * 20
-); /* this will give you a random whole number up to 20 */
+// length
+val =
+  firstName.length; /* this will count the amount of characters in the string */
 
+// concat()
+val = firstName.concat(" ", lastName);
+
+// Change case
+val = firstName.toUpperCase();
+val = firstName.toLowerCase();
+
+// slice()
+val = firstName.slice(0, 4);
+
+// split()
+val = string.split(
+  " "
+); /* this will turn a string into an array split at the spaces */
+
+// replace()
+val = string.replace("Heather", "Mariam");
+
+// includes()
+val = string.includes("Hi");
 console.log(val);
