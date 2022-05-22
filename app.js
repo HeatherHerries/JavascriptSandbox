@@ -1,42 +1,44 @@
-// Switches
-const color = "yellow";
+// Functions Expressions & Declarations
 
-switch (color) {
-  case "red":
-    console.log("The color is red");
-    break;
-  case "blue":
-    console.log("The color is blue");
-    break;
-  default:
-    console.log("Color is not red or blue");
-    break;
+// Function Declaration
+function greet(firstName, lastName) {
+  //console.log("Hello");
+  return "Hello " + firstName + " " + lastName;
 }
 
-let day;
+// greet()
+console.log(greet("Heather", "Herries"));
 
-switch (new Date().getDay()) {
-  case 0:
-    day = "Sunday";
-    break;
-  case 1:
-    day = "Monday";
-    break;
-  case 2:
-    day = "Tuesday";
-    break;
-  case 3:
-    day = "Wednesday";
-    break;
-  case 4:
-    day = "Thursday";
-    break;
-  case 5:
-    day = "Friday";
-    break;
-  case 6:
-    day = "Saturday";
-    break;
-}
+// Function Expression
+const square = function(x) {
+  return x * x;
+};
 
-console.log(`Today is ${day}`);
+console.log(square(8));
+
+// Immediately Invokable Function Expressions - IIFE's
+(function() {
+  console.log("IIFE ran..");
+})();
+
+(function(name) {
+  console.log("Hello " + name);
+})("Heather");
+
+// Property Methods
+const todo = {
+  add: function() {
+    console.log("Add Todo...");
+  },
+  edit: function(id) {
+    console.log(`Edit todo ${id}`);
+  }
+};
+
+todo.delete = function() {
+  console.log("Delete Todo...");
+};
+
+todo.add();
+todo.edit(22);
+todo.delete();
