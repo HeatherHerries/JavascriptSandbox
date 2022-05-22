@@ -1,44 +1,72 @@
-// Functions Expressions & Declarations
+// General Loops
+// For Loop
 
-// Function Declaration
-function greet(firstName, lastName) {
-  //console.log("Hello");
-  return "Hello " + firstName + " " + lastName;
+for (let i = 0; i < 10; i++) {
+  if (i === 2) {
+    console.log("2 is my favorite number");
+    // continue will continue on with the rest of the loop instead of logging the result twice and then continuing
+    continue;
+  }
+
+  if (i === 5) {
+    console.log("The loop is stopped");
+    // break will stop the lopp at this point.
+    break;
+  }
+
+  console.log(i);
 }
 
-// greet()
-console.log(greet("Heather", "Herries"));
+// While Loop
+let i = 0;
 
-// Function Expression
-const square = function(x) {
-  return x * x;
+while (i < 10) {
+  console.log("Number " + i);
+  i++;
+}
+
+// Do While Loop
+
+let z = 0;
+
+do {
+  console.log("This is number " + z);
+  z++;
+} while (z < 10);
+
+// Looping thru arrays
+
+const fruit = ["apple", "orange", "cherry", "avacado"];
+
+for (let i = 0; i < fruit.length; i++) {
+  console.log(fruit[i]);
+}
+
+// forEach() Method
+fruit.forEach(function(i) {
+  console.log(i);
+});
+
+// map() Method
+const users = [
+  { id: 1, name: "John" },
+  { id: 2, name: "Bruce" },
+  { id: 3, name: "Ken" }
+];
+
+const names = users.map(function(user) {
+  return user.name;
+});
+
+console.log(names);
+
+const competitor = {
+  firstName: "Heather",
+  lastName: "Herries",
+  age: 46
 };
 
-console.log(square(8));
-
-// Immediately Invokable Function Expressions - IIFE's
-(function() {
-  console.log("IIFE ran..");
-})();
-
-(function(name) {
-  console.log("Hello " + name);
-})("Heather");
-
-// Property Methods
-const todo = {
-  add: function() {
-    console.log("Add Todo...");
-  },
-  edit: function(id) {
-    console.log(`Edit todo ${id}`);
-  }
-};
-
-todo.delete = function() {
-  console.log("Delete Todo...");
-};
-
-todo.add();
-todo.edit(22);
-todo.delete();
+// For in loop
+for (let x in competitor) {
+  console.log(`${x} : ${competitor[x]}`);
+}
