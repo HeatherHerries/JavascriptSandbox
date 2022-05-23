@@ -1,49 +1,28 @@
-// Window Mothods, Objects and Properties
+// Block Scope with let and const
+// Global Scope
+var a = 1;
+let b = 2;
+const c = 3;
 
-// Alert
-alert("Well, Hello there!");
-
-// Prompt
-const input = prompt();
-alert(input);
-
-// Confirm
-if (confirm("Are you sure you want to do that?")) {
-  console.log("YES");
-} else {
-  console.log("NO");
+function test() {
+  var a = 4;
+  let b = 5;
+  const c = 6;
+  console.log("Function Scope:", a, b, c);
 }
 
-// Get Outer Height and Width
-let val;
-val = window.outerHeight;
+test();
 
-console.log(val);
+if (true) {
+  // Block Scope
+  var a = 4;
+  let b = 5;
+  const c = 6;
+  console.log("If Scope: ", a, b, c);
+}
 
-val = window.outerWidth;
+for (let a = 0; a < 10; a++) {
+  console.log(`Loop: ${a}`);
+}
 
-console.log(val);
-
-// Get Inner Height and Width
-
-val = window.innerHeight;
-
-console.log(val);
-
-val = window.innerWidth;
-
-console.log(val);
-
-// Scroll Points
-val = window.scrollY;
-
-console.log(val);
-
-// Location Object
-val = window.location;
-val = window.location.hostname;
-val = window.location.port;
-val = window.location.href;
-console.log(val);
-
-console.log(val);
+console.log("Global Scope: ", a, b, c);
