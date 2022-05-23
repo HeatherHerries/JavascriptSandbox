@@ -1,72 +1,49 @@
-// General Loops
-// For Loop
+// Window Mothods, Objects and Properties
 
-for (let i = 0; i < 10; i++) {
-  if (i === 2) {
-    console.log("2 is my favorite number");
-    // continue will continue on with the rest of the loop instead of logging the result twice and then continuing
-    continue;
-  }
+// Alert
+alert("Well, Hello there!");
 
-  if (i === 5) {
-    console.log("The loop is stopped");
-    // break will stop the lopp at this point.
-    break;
-  }
+// Prompt
+const input = prompt();
+alert(input);
 
-  console.log(i);
+// Confirm
+if (confirm("Are you sure you want to do that?")) {
+  console.log("YES");
+} else {
+  console.log("NO");
 }
 
-// While Loop
-let i = 0;
+// Get Outer Height and Width
+let val;
+val = window.outerHeight;
 
-while (i < 10) {
-  console.log("Number " + i);
-  i++;
-}
+console.log(val);
 
-// Do While Loop
+val = window.outerWidth;
 
-let z = 0;
+console.log(val);
 
-do {
-  console.log("This is number " + z);
-  z++;
-} while (z < 10);
+// Get Inner Height and Width
 
-// Looping thru arrays
+val = window.innerHeight;
 
-const fruit = ["apple", "orange", "cherry", "avacado"];
+console.log(val);
 
-for (let i = 0; i < fruit.length; i++) {
-  console.log(fruit[i]);
-}
+val = window.innerWidth;
 
-// forEach() Method
-fruit.forEach(function(i) {
-  console.log(i);
-});
+console.log(val);
 
-// map() Method
-const users = [
-  { id: 1, name: "John" },
-  { id: 2, name: "Bruce" },
-  { id: 3, name: "Ken" }
-];
+// Scroll Points
+val = window.scrollY;
 
-const names = users.map(function(user) {
-  return user.name;
-});
+console.log(val);
 
-console.log(names);
+// Location Object
+val = window.location;
+val = window.location.hostname;
+val = window.location.port;
+val = window.location.href;
+console.log(val);
 
-const competitor = {
-  firstName: "Heather",
-  lastName: "Herries",
-  age: 46
-};
-
-// For in loop
-for (let x in competitor) {
-  console.log(`${x} : ${competitor[x]}`);
-}
+console.log(val);
