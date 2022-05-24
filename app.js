@@ -1,47 +1,32 @@
-// Removing and Replacing Elements in the DOM
+// Event Listeners & The Event Object
 
-// Replace an Element
-// Create Element
-const newHeading = document.createElement("h2");
+// Add Event Listener
 
-// Add Id
-newHeading.id = "task-title";
+// Select the item from the DOM that we want to add the event listener to
+document.querySelector(".clear-tasks").addEventListener("click", onClick);
 
-// New Text Node
-newHeading.appendChild(document.createTextNode("Task List"));
+function onClick(e) {
+  let val;
+  val = e;
 
-// Get the old heading
-const oldHeading = document.getElementById("task-title");
-const cardAction = document.querySelector(".card-action");
+  // Event target element
+  val = e.target;
+  val = e.target.id;
+  val = e.target.className;
+  val = e.target.classList;
 
-// Replace
-cardAction.replaceChild(newHeading, oldHeading);
+  // Event type
+  val = e.type;
 
-// Remove Element
-const lis = document.querySelectorAll("li");
-const list = document.querySelector("ul");
+  // Timestamp
+  val = e.timeStamp;
 
-// Remove list item
-lis[0].remove();
+  // Coordinates event relative to the window
+  val = e.clientY;
+  val = e.clientX;
 
-// Remove child element
-list.removeChild(lis[3]);
-
-// Classes and Attributes
-const firstLi = document.querySelector("li:first-child");
-const link = firstLi.children[0];
-
-let val;
-val = link.className;
-val = link.classList;
-val = link.classList[0];
-link.classList.add("test");
-link.classList.remove("test");
-val = link;
-
-// Attributes
-val = link.getAttribute("href");
-val = link.setAttribute("href", "http://google.com");
-val = link.hasAttribute("href");
-
-console.log(val);
+  // Coordinates event relative to element
+  val = e.offsetY;
+  val = e.offsetX;
+  console.log(val);
+}
