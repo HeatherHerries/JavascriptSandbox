@@ -1,30 +1,54 @@
-// DOM Selectors for Single Elements
+// DOM Selectors for Multiple Elements
 
-// document.getElementById()
+// document.getElementByClassName
 
-console.log(document.getElementById("task-title"));
+let items = document.getElementsByClassName("collection-item");
+console.log(items);
+console.log(items[0]);
+items[0].style.color = "green";
+items[3].textContent = "Task Item";
 
-// Get things from the element
-console.log(document.getElementById("task-title").id);
-console.log(document.getElementById("task-title").className);
+const listItems = document
+  .querySelector("ul")
+  .getElementsByClassName("collection-item");
 
-const taskTitle = document.getElementById("task-title");
+console.log(listItems);
 
-// Change Styling
-taskTitle.style.background = "#333";
-taskTitle.style.color = "#fff";
-taskTitle.style.padding = "5px";
+// document.getElementByTagName
+let lis = document.getElementsByTagName("li");
+console.log(lis);
+console.log(lis[0]);
+lis[2].style.color = "yellow";
+lis[4].textContent = "Task Item";
 
-// Change Content
-taskTitle.textContent = "Task List";
-taskTitle.innerText = "My Task List";
-taskTitle.innerHTML = '<span style="color:red">Task List</span>';
+// Convert HTML Collection into an Array
+lis = Array.from(lis);
 
-// document.querySelector
-console.log(document.querySelector("#task-title"));
-console.log(document.querySelector(".card-title"));
-console.log(document.querySelector("h5"));
-document.querySelector("li").style.color = "red";
-document.querySelector("li:last-child").style.color = "red";
-document.querySelector("li:nth-child(3)").style.color = "blue";
-document.querySelector("li:nth-child(4)").textContent = "Favorite Task";
+lis.reverse();
+
+lis.forEach(function(li, index) {
+  console.log(li.className);
+  li.textContent = `${index}: ToDo Item`;
+});
+console.log(lis);
+
+// document.querySelectorAll (this will return a node list)
+items = document.querySelectorAll("ul.collection li.collection-item");
+
+items.forEach(function(item, index) {
+  item.textContent = `${index}: Hello`;
+});
+
+const liOdd = document.querySelectorAll("li:nth-child(odd)");
+
+const liEven = document.querySelectorAll("li:nth-child(even)");
+
+liOdd.forEach(function(item, index) {
+  item.textContent = `${index}: Boo`;
+});
+
+for (let i = 0; i < liEven.length; i++) {
+  liEven[i].style.background = "orange";
+}
+
+console.log(items);
