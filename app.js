@@ -1,54 +1,58 @@
-// DOM Selectors for Multiple Elements
+// Traversing the DOM
+let val;
 
-// document.getElementByClassName
+const list = document.querySelector("ul.collection");
+const listItem = document.querySelector("li.collection-item:first-child");
 
-let items = document.getElementsByClassName("collection-item");
-console.log(items);
-console.log(items[0]);
-items[0].style.color = "green";
-items[3].textContent = "Task Item";
+val = listItem;
+val = list;
 
-const listItems = document
-  .querySelector("ul")
-  .getElementsByClassName("collection-item");
+// Get child nodes
+val = list.childNodes;
+val = list.childNodes[0];
+val = list.childNodes[0].nodeName;
+val = list.childNodes[1].nodeType;
 
-console.log(listItems);
+// 1 - Element
+// 2 - Attribute (deprecated)
+// 3 - Text Node
+// 8 - Comment
+// 9 - Document Itself
+// 10 - Doctype
 
-// document.getElementByTagName
-let lis = document.getElementsByTagName("li");
-console.log(lis);
-console.log(lis[0]);
-lis[2].style.color = "yellow";
-lis[4].textContent = "Task Item";
+// Get children element nodes
+val = list.children;
+val = list.children[0];
+list.children[1].textContent = "Task Item";
 
-// Convert HTML Collection into an Array
-lis = Array.from(lis);
+// Get Children of Children
+val = list.children[3].children;
 
-lis.reverse();
+// .firstChild
+val = list.firstChild;
 
-lis.forEach(function(li, index) {
-  console.log(li.className);
-  li.textContent = `${index}: ToDo Item`;
-});
-console.log(lis);
+// .firstElementChild
+val = list.firstElementChild;
 
-// document.querySelectorAll (this will return a node list)
-items = document.querySelectorAll("ul.collection li.collection-item");
+// .lastChild
+val = list.lastChild;
 
-items.forEach(function(item, index) {
-  item.textContent = `${index}: Hello`;
-});
+// .lastElementChild
+val = list.lastElementChild;
 
-const liOdd = document.querySelectorAll("li:nth-child(odd)");
+// .childElementCount;
+val = list.childElementCount;
 
-const liEven = document.querySelectorAll("li:nth-child(even)");
+// Get parent node
+val = listItem.parentNode;
+val = listItem.parentElement;
+val = listItem.parentElement.parentElement;
 
-liOdd.forEach(function(item, index) {
-  item.textContent = `${index}: Boo`;
-});
+// Get next sibling
+val = listItem.nextSibling;
+val = listItem.nextElementSibling;
 
-for (let i = 0; i < liEven.length; i++) {
-  liEven[i].style.background = "orange";
-}
-
-console.log(items);
+// Get previous sibling
+val = listItem.previousSibling;
+val = listItem.previousElementSibling;
+console.log(val);
