@@ -1,49 +1,32 @@
-// Keyboard and Input Events
-const form = document.querySelector("form");
-const taskInput = document.getElementById("task");
-const heading = document.querySelector("h5");
-const select = document.querySelector("select");
+// Event Bubbling and Delegation
 
-// Clear Input
-taskInput.value = " ";
+// Bubbling
+document.querySelector(".card-title").addEventListener("click", function() {
+  console.log("card-title");
+});
 
-form.addEventListener("submit", runEvent);
+document.querySelector(".card-content").addEventListener("click", function() {
+  console.log("card-content");
+});
 
-// Keydown
-taskInput.addEventListener("keydown", runEvent);
+document.querySelector(".card").addEventListener("click", function() {
+  console.log("card");
+});
 
-// Keyup
-taskInput.addEventListener("keyup", runEvent);
+document.querySelector(".col").addEventListener("click", function() {
+  console.log("col");
+});
 
-// Keypress
-taskInput.addEventListener("keypress", runEvent);
+// Delegation
+const delItem = document.querySelector(".delete-item");
 
-// Focus
-taskInput.addEventListener("focus", runEvent);
+delItem.addEventListener("click", deleteItem);
 
-// Blur
-taskInput.addEventListener("blur", runEvent);
+document.body.addEventListener("click", deleteItem);
 
-// Cut
-taskInput.addEventListener("cut", runEvent);
-
-// Paste
-taskInput.addEventListener("paste", runEvent);
-
-// Input
-taskInput.addEventListener("input", runEvent);
-
-// Change
-select.addEventListener("change", runEvent);
-function runEvent(e) {
-  console.log(`EVENT TYPE: ${e.type}`);
-
-  console.log(e.target.value);
-
-  heading.innerText = e.target.value;
-
-  // Get input value
-  console.log(taskInput.value);
-
-  e.preventDefault();
+function deleteItem(e) {
+  console.log(e.target);
+  if (e.target.className === "fa fa-remove") {
+    console.log("delete item");
+  }
 }
