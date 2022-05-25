@@ -1,41 +1,49 @@
-// Mouse Events
-
-const clearBtn = document.querySelector(".clear-tasks");
-const card = document.querySelector(".card");
+// Keyboard and Input Events
+const form = document.querySelector("form");
+const taskInput = document.getElementById("task");
 const heading = document.querySelector("h5");
+const select = document.querySelector("select");
 
-// Run Click Event
-clearBtn.addEventListener("click", runEvent);
+// Clear Input
+taskInput.value = " ";
 
-// Run Double Click Event
-clearBtn.addEventListener("dblclick", runEvent);
+form.addEventListener("submit", runEvent);
 
-// Run Mousedown Event (Click and Hold)
-clearBtn.addEventListener("mousedown", runEvent);
+// Keydown
+taskInput.addEventListener("keydown", runEvent);
 
-// Run Mouseup Event (Release Click)
-clearBtn.addEventListener("mouseup", runEvent);
+// Keyup
+taskInput.addEventListener("keyup", runEvent);
 
-// Run Mouseenter Event
-card.addEventListener("mouseenter", runEvent);
+// Keypress
+taskInput.addEventListener("keypress", runEvent);
 
-// Run Mouseleave Event
-card.addEventListener("mouseleave", runEvent);
+// Focus
+taskInput.addEventListener("focus", runEvent);
 
-// Run Mouseover Event
-card.addEventListener("mouseover", runEvent);
+// Blur
+taskInput.addEventListener("blur", runEvent);
 
-// Run Mousemove Event
-card.addEventListener("mousemove", runEvent);
+// Cut
+taskInput.addEventListener("cut", runEvent);
 
-// Run Mouseout Event
-card.addEventListener("mouseout", runEvent);
+// Paste
+taskInput.addEventListener("paste", runEvent);
 
-// Create an Event Handler
+// Input
+taskInput.addEventListener("input", runEvent);
+
+// Change
+select.addEventListener("change", runEvent);
 function runEvent(e) {
   console.log(`EVENT TYPE: ${e.type}`);
 
-  heading.textContent = `MouseX: ${e.offsetX} MouseY: ${e.offsetY}`;
+  console.log(e.target.value);
 
-  document.body.style.backgroundColor = `rgb(${e.offsetX}, ${e.offsetY}, 40)`;
+  heading.innerText = e.target.value;
+
+  // Get input value
+  console.log(taskInput.value);
+
+  e.preventDefault();
 }
