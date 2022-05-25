@@ -1,32 +1,41 @@
-// Event Listeners & The Event Object
+// Mouse Events
 
-// Add Event Listener
+const clearBtn = document.querySelector(".clear-tasks");
+const card = document.querySelector(".card");
+const heading = document.querySelector("h5");
 
-// Select the item from the DOM that we want to add the event listener to
-document.querySelector(".clear-tasks").addEventListener("click", onClick);
+// Run Click Event
+clearBtn.addEventListener("click", runEvent);
 
-function onClick(e) {
-  let val;
-  val = e;
+// Run Double Click Event
+clearBtn.addEventListener("dblclick", runEvent);
 
-  // Event target element
-  val = e.target;
-  val = e.target.id;
-  val = e.target.className;
-  val = e.target.classList;
+// Run Mousedown Event (Click and Hold)
+clearBtn.addEventListener("mousedown", runEvent);
 
-  // Event type
-  val = e.type;
+// Run Mouseup Event (Release Click)
+clearBtn.addEventListener("mouseup", runEvent);
 
-  // Timestamp
-  val = e.timeStamp;
+// Run Mouseenter Event
+card.addEventListener("mouseenter", runEvent);
 
-  // Coordinates event relative to the window
-  val = e.clientY;
-  val = e.clientX;
+// Run Mouseleave Event
+card.addEventListener("mouseleave", runEvent);
 
-  // Coordinates event relative to element
-  val = e.offsetY;
-  val = e.offsetX;
-  console.log(val);
+// Run Mouseover Event
+card.addEventListener("mouseover", runEvent);
+
+// Run Mousemove Event
+card.addEventListener("mousemove", runEvent);
+
+// Run Mouseout Event
+card.addEventListener("mouseout", runEvent);
+
+// Create an Event Handler
+function runEvent(e) {
+  console.log(`EVENT TYPE: ${e.type}`);
+
+  heading.textContent = `MouseX: ${e.offsetX} MouseY: ${e.offsetY}`;
+
+  document.body.style.backgroundColor = `rgb(${e.offsetX}, ${e.offsetY}, 40)`;
 }
