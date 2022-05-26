@@ -1,32 +1,43 @@
-// Event Bubbling and Delegation
+// Local and Session Storage
 
-// Bubbling
-document.querySelector(".card-title").addEventListener("click", function() {
-  console.log("card-title");
-});
+// Set Local Storage Item
+localStorage.setItem("name", "John");
+localStorage.setItem("age", "30");
 
-document.querySelector(".card-content").addEventListener("click", function() {
-  console.log("card-content");
-});
+// Set Session Storage Item
+sessionStorage.setItem("name", "Beth");
 
-document.querySelector(".card").addEventListener("click", function() {
-  console.log("card");
-});
+// Remove from Storage
+localStorage.removeItem("name");
 
-document.querySelector(".col").addEventListener("click", function() {
-  console.log("col");
-});
+// Get from Storage
+const name = localStorage.getItem("name");
+const age = localStorage.getItem("age");
 
-// Delegation
-const delItem = document.querySelector(".delete-item");
+// Clear Local Storage
+localStorage.clear();
+console.log(name, age);
 
-delItem.addEventListener("click", deleteItem);
+document.querySelector("form").addEventListener("submit", function(e) {
+  const task = document.getElementById("task").value;
 
-document.body.addEventListener("click", deleteItem);
+  let task;
 
-function deleteItem(e) {
-  console.log(e.target);
-  if (e.target.className === "fa fa-remove") {
-    console.log("delete item");
+  if (localStorage.getItem("tasks") === null) {
+    tasks = [];
+  } else {
+    tasks = JSON.parse(localStorage.getItem("tasks"));
   }
-}
+
+  tasks.push(task);
+
+  localStorage.setItem("tasks", JSON.stringify(tasks));
+  alert("Task Saved");
+  e.preventDefault();
+});
+
+const tasks = JSON.parse(localStorage.getItem("tasks"));
+
+tasks.forEach(function(task) {
+  console.log(task);
+});
