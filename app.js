@@ -1,45 +1,38 @@
-// Build Constructors
-// String
-const name1 = "Jeff";
-const name2 = new String("George");
+// Prototypes Explained
 
-// console.log(name2);
+// Object Prototype
+// Person Prototype
 
-// console.log(typeof name2);
-
-if (name2 === "Jeff") {
-  console.log("YES");
-} else {
-  console.log("NO");
+// Person Constructor
+function Person(firstName, lastName, dob) {
+  this.firstName = firstName;
+  this.lastName = lastName;
+  this.birthday = new Date(dob);
 }
 
-// Number
-const num1 = 5;
-const num2 = new Number(5);
-
-console.log(num2);
-
-// Boolean
-const boo1 = true;
-const boo2 = new Boolean(true);
-
-// Function
-const getSum1 = function(x, y) {
-  return x + y;
+// Calculate Age
+Person.prototype.calculateAge = function() {
+  const diff = Date.now() - this.birthday.getTime();
+  const ageDate = new Date(diff);
+  return Math.abs(ageDate.getUTCFullYear() - 1970);
 };
 
-const getSum2 = new Function("x", "y", "return 1 + 1");
+// Get Full Name
+Person.prototype.getFullName = function() {
+  return `${this.firstName} ${this.lastName}`;
+};
 
-console.log(getSum1(1, 1));
+// Gets Married
+Person.prototype.getsMarried = function(newLastName) {
+  this.lastName = newLastName;
+};
 
-// Object
-const john1 = { name: "John" };
-const john2 = new Object({ name: "John" });
+const john = new Person("John", "Doe", "8-12-90");
+const sara = new Person("Sara", "Johnson", "9-26-12");
 
-// Array
-const arr1 = [1, 2, 3, 4];
-const arr2 = new Array(1, 2, 3, 4);
-
-// Regular Expressions
-const re1 = /\w+/;
-const re2 = new RegExp("\\w+");
+console.log(sara);
+console.log(john.calculateAge());
+console.log(sara.getFullName());
+sara.getsMarried("Smith");
+console.log(sara.getFullName());
+console.log(sara.hasOwnProperty("firstName"));
