@@ -1,38 +1,47 @@
-// Prototypes Explained
-
-// Object Prototype
-// Person Prototype
+// Prototypal Inheritance
 
 // Person Constructor
-function Person(firstName, lastName, dob) {
+function Person(firstName, lastName) {
   this.firstName = firstName;
   this.lastName = lastName;
-  this.birthday = new Date(dob);
 }
 
-// Calculate Age
-Person.prototype.calculateAge = function() {
-  const diff = Date.now() - this.birthday.getTime();
-  const ageDate = new Date(diff);
-  return Math.abs(ageDate.getUTCFullYear() - 1970);
+//Greeting
+Person.prototype.greeting = function() {
+  return `Hello there ${this.firstName} ${this.lastName}`;
 };
 
-// Get Full Name
-Person.prototype.getFullName = function() {
-  return `${this.firstName} ${this.lastName}`;
+const person1 = new Person("Heather", "Herries");
+
+console.log(person1.greeting());
+
+// Customer Constructor
+function Customer(firstName, lastName, phone, membership) {
+  Person.call(this, firstName, lastName);
+
+  this.phone = phone;
+  this.membership = membership;
+}
+
+// Inherit the Person Prototype Methods
+Customer.prototype = Object.create(Person.prototype);
+
+// Make Customer Prototype return Customer
+Customer.prototype.constructor = Customer;
+
+// Create Customer
+const customer1 = new Customer(
+  "Terrance",
+  "Parker",
+  "555-555-5555",
+  "Platinum"
+);
+
+console.log(customer1);
+
+//Customer Greeting
+Customer.prototype.greeting = function() {
+  return `Hello there ${this.firstName} ${this.lastName} welcome to Bakeology! Can I take your order?`;
 };
 
-// Gets Married
-Person.prototype.getsMarried = function(newLastName) {
-  this.lastName = newLastName;
-};
-
-const john = new Person("John", "Doe", "8-12-90");
-const sara = new Person("Sara", "Johnson", "9-26-12");
-
-console.log(sara);
-console.log(john.calculateAge());
-console.log(sara.getFullName());
-sara.getsMarried("Smith");
-console.log(sara.getFullName());
-console.log(sara.hasOwnProperty("firstName"));
+console.log(customer1.greeting());
