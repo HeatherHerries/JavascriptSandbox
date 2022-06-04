@@ -1,47 +1,27 @@
-// Prototypal Inheritance
-
-// Person Constructor
-function Person(firstName, lastName) {
-  this.firstName = firstName;
-  this.lastName = lastName;
-}
-
-//Greeting
-Person.prototype.greeting = function() {
-  return `Hello there ${this.firstName} ${this.lastName}`;
+// Using Object.create
+const personPrototypes = {
+  greeting: function() {
+    return `Hello there ${this.firstName} ${this.lastName}`;
+  },
+  getsMarried: function(newLastName) {
+    this.lastName = newLastName;
+  }
 };
 
-const person1 = new Person("Heather", "Herries");
+const mary = Object.create(personPrototypes);
+mary.firstName = "Mary";
+mary.lastName = "Williams";
+mary.age = 30;
 
-console.log(person1.greeting());
+mary.getsMarried("Thompson");
 
-// Customer Constructor
-function Customer(firstName, lastName, phone, membership) {
-  Person.call(this, firstName, lastName);
+console.log(mary.greeting());
 
-  this.phone = phone;
-  this.membership = membership;
-}
+const jeff = Object.create(personPrototypes, {
+  firstName: { value: "Jeff" },
+  lastName: { value: "Jones" },
+  age: { value: 36 }
+});
 
-// Inherit the Person Prototype Methods
-Customer.prototype = Object.create(Person.prototype);
-
-// Make Customer Prototype return Customer
-Customer.prototype.constructor = Customer;
-
-// Create Customer
-const customer1 = new Customer(
-  "Terrance",
-  "Parker",
-  "555-555-5555",
-  "Platinum"
-);
-
-console.log(customer1);
-
-//Customer Greeting
-Customer.prototype.greeting = function() {
-  return `Hello there ${this.firstName} ${this.lastName} welcome to Bakeology! Can I take your order?`;
-};
-
-console.log(customer1.greeting());
+console.log(jeff);
+console.log(jeff.greeting());
