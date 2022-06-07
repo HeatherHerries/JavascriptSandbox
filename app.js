@@ -1,27 +1,36 @@
-// Using Object.create
-const personPrototypes = {
-  greeting: function() {
+// ES6 Classes
+class Person {
+  constructor(firstName, lastName, dob) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.birthday = new Date(dob);
+  }
+
+  greeting() {
     return `Hello there ${this.firstName} ${this.lastName}`;
-  },
-  getsMarried: function(newLastName) {
+  }
+
+  calculateAge() {
+    const diff = Date.now() - this.birthday.getTime();
+    const ageDate = new Date(diff);
+    return Math.abs(ageDate.getUTCFullYear() - 1970);
+  }
+
+  getsMarried(newLastName) {
     this.lastName = newLastName;
   }
-};
 
-const mary = Object.create(personPrototypes);
-mary.firstName = "Mary";
-mary.lastName = "Williams";
-mary.age = 30;
+  static addNumbers(x, y) {
+    return x + y;
+  }
+}
 
-mary.getsMarried("Thompson");
+const heather = new Person("Heather", "Herries", "09-30-1975");
 
-console.log(mary.greeting());
+heather.getsMarried("Baker");
 
-const jeff = Object.create(personPrototypes, {
-  firstName: { value: "Jeff" },
-  lastName: { value: "Jones" },
-  age: { value: 36 }
-});
-
-console.log(jeff);
-console.log(jeff.greeting());
+console.log(heather);
+console.log(heather.greeting());
+console.log(heather.birthday);
+console.log(heather.calculateAge());
+console.log(Person.addNumbers(1, 2));
