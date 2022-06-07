@@ -1,36 +1,31 @@
-// ES6 Classes
+// Sub Classes
+
 class Person {
-  constructor(firstName, lastName, dob) {
+  constructor(firstName, lastName) {
     this.firstName = firstName;
     this.lastName = lastName;
-    this.birthday = new Date(dob);
   }
 
   greeting() {
     return `Hello there ${this.firstName} ${this.lastName}`;
   }
+}
 
-  calculateAge() {
-    const diff = Date.now() - this.birthday.getTime();
-    const ageDate = new Date(diff);
-    return Math.abs(ageDate.getUTCFullYear() - 1970);
+class Customer extends Person {
+  constructor(firstName, lastName, phone, membership) {
+    super(firstName, lastName);
+
+    this.phone = phone;
+    this.membership = membership;
   }
 
-  getsMarried(newLastName) {
-    this.lastName = newLastName;
-  }
-
-  static addNumbers(x, y) {
-    return x + y;
+  static getMembershipCost() {
+    return 500;
   }
 }
 
-const heather = new Person("Heather", "Herries", "09-30-1975");
-
-heather.getsMarried("Baker");
+const heather = new Customer("Heather", "Herries", "720-757-0779", "Premium");
 
 console.log(heather);
 console.log(heather.greeting());
-console.log(heather.birthday);
-console.log(heather.calculateAge());
-console.log(Person.addNumbers(1, 2));
+console.log(Customer.getMembershipCost());
