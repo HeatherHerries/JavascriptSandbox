@@ -1,31 +1,23 @@
-// Sub Classes
+const user = { email: "jdoe@gmail.com" };
 
-class Person {
-  constructor(firstName, lastName) {
-    this.firstName = firstName;
-    this.lastName = lastName;
-  }
+try {
+  // Produce a ReferenceError
+  // myFunction();
+  // Produce a TypeError
+  // null.myFunction();
 
-  greeting() {
-    return `Hello there ${this.firstName} ${this.lastName}`;
+  if (!user.name) {
+    // throw "User has no name";
+    throw new SyntaxError("User has no name");
   }
+} catch (e) {
+  console.log(`User Error: ${e.message}`);
+  // console.log(e);
+  // console.log(e.message);
+  // console.log(e.name);
+  console.log(e instanceof ReferenceError);
+} finally {
+  console.log("Finally runs regardless of result...");
 }
 
-class Customer extends Person {
-  constructor(firstName, lastName, phone, membership) {
-    super(firstName, lastName);
-
-    this.phone = phone;
-    this.membership = membership;
-  }
-
-  static getMembershipCost() {
-    return 500;
-  }
-}
-
-const heather = new Customer("Heather", "Herries", "720-757-0779", "Premium");
-
-console.log(heather);
-console.log(heather.greeting());
-console.log(Customer.getMembershipCost());
+console.log("Program continues...");
